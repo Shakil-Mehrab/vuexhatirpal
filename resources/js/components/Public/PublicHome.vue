@@ -696,7 +696,7 @@ export default {
     },
     computed:{
         getBestProduct(){
-        return this.$store.getters.getBestProduct
+            return this.$store.getters.getBestProduct
         },
         getFashionProduct(){
         return this.$store.getters.getFashionProduct

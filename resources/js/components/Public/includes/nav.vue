@@ -11,8 +11,8 @@
                 </div>
                 <div class="electronics-login-register">
                     <ul>
-                        <li style="font-color:white"><router-link to="/compare/list"><i class="pe-7s-repeat"></i>Compare ({{getAllCompareProduct.data.length}})</router-link></li>
-                        <li><router-link to="/wish/list"><i class="pe-7s-like"></i>Wishlist ({{getAllWishProduct.data.length}})</router-link></li>
+                        <li v-if="getAllCompareProduct.data" style="font-color:white"><router-link to="/compare/list"><i class="pe-7s-repeat"></i>Compare ({{getAllCompareProduct.data.length}})</router-link></li>
+                        <li v-if="getAllWishProduct.data"><router-link to="/wish/list"><i class="pe-7s-like"></i>Wishlist ({{getAllWishProduct.data.length}})</router-link></li>
                         <li><a href="#"><i class="pe-7s-flag"></i>Bangladesh</a></li>
                         <li><a class="border-none" href="#">$ USD</a></li>
                         <li v-if="getYourShop==''"><router-link to="/create/your/shop"  class="nav-link"><i class="pe-7s-users"></i>Create Your Shop</router-link></li>

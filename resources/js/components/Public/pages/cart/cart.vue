@@ -20,22 +20,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <cart-item
+                                        v-for="data in getCartContent" 
+                                        :cart="data" :key="data.id" 
+                                        @removeItem="remove" 
+                                        @updateItem="updateQty" 
+                                    />
 
-                                    <tr v-for="cart in getCartContent" :key='cart.id'>
-                                        <td class="product-remove"><a href="" @click.prevent="remove(cart.id)"><i class="pe-7s-close"></i></a></td>
-                                        <td class="product-thumbnail" v-if="cart.attributes.image">
-                                            <a href="#"><img :src="`storage/${cart.attributes.image}`" style="width:80px;height:80px" alt=""></a>
-                                        </td><td v-else><img src="" style="width:80px;height:80px" alt=""></td>
-                                        <td class="product-name"><a href="#">{{cart.name}}</a></td>
-                                        <td class="product-price-cart"><span class="amount">$ {{cart.price*cart.quantity}}</span></td>
-                                        <td class="product-quantity">
-                                        <form  @submit.prevent="updateQty(cart.id)">
-                                          <input type="number" v-model="form.quantity">
-                                          <input type="submit" value="save">
-                                        </form>
-                                        </td>
-                                        <!-- <td class="product-subtotal">${{cart.quantity}}</td> -->
-                                    </tr>
+                                    
 
                                 </tbody>
                             </table>
@@ -76,11 +68,12 @@
 </template>
 <script>
 import NavLoad from "./../../includes/nav.vue"
-
+import CartItem from "./CartItem.vue"
 export default {
     name: "PublicHome",
     components:{
-      NavLoad
+      NavLoad,
+      'cart-item': CartItem
     },
     data () {
     return {
@@ -114,11 +107,9 @@ export default {
         showCartSubtotal(){
         this.$store.dispatch('showCartSubtotal');
         },
-        updateQty(id){
-
-            console.log(id)
+        updateQty(id, qty){
             console.log(this.form.quantity)
-             this.form.post('/user/cart/update/'+id+'?qty='+this.form.quantity)
+             this.form.post('/user/cart/update/'+id+'?qty='+qty)
                 .then(()=>{
                     // this.$store.dispatch("showAdminCategory")
                     this.$store.dispatch('showCartContent');
@@ -163,13 +154,10 @@ export default {
       this.showCartContent();
       this.showCartTotal();
       this.showCartSubtotal();
-
     //   this.getPopularProduct();
     },
 };
 </script>
 
 <style scoped>
-
 </style>
-
