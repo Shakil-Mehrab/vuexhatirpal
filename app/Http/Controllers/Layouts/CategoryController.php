@@ -11,10 +11,23 @@ use App\Model\Slide;
 
 class CategoryController extends Controller
 {
-    public function index(){
-        $categories=Category::whereNull('parent_id')->with('children','children.children')->get();
-        return response()->json(['allCategories'=>$categories],200);
+    public function gridIndex($id){
+        $category=Category::find($id);
+        $products=collect([]);
+        $products=$category->allProducts();
+        $recentProducts=Product::orderBy('id','desc')->get();
+        return view('layouts.category.categoryGrid',compact('products','id','recentProducts'));
     }
+    public function listIndex($id){
+        $category=Category::find($id);
+        $products=collect([]);
+        $products=$category->allProducts();
+        $recentProducts=Product::orderBy('id','desc')->get();
+        return view('layouts.category.categoryList',compact('products','id','recentProducts'));
+    }
+
+
+    
     public function frontSlide(){
         $categories=Slide::where('slug','home')->get();
         return response()->json(['frontSlide'=>$categories],200);

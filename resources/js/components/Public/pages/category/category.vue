@@ -35,27 +35,23 @@
                 <div class="slider-active owl-carousel">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-
-
                         </ol>
                         <div class="carousel-inner" role="listbox">
-
-                                <div class="item active">
+                            <div class="item active">
                                 <img src="/storage/default/slider.jpg" style="width:100%;height: 320px;" alt="Slider">
                                 <div class="carousel-caption">
                                 </div>
-                                </div>
-                                <div class="item" v-for="slide in getSlide" :key="slide.id">
+                            </div>
+                            <div class="item" v-for="slide in getSlide" :key="slide.id">
                                 <img :src="`storage/${slide.image}`" style="width:100%;height: 320px;" alt="Slider">
                                 <div class="carousel-caption">
                                 </div>
-                                </div>
+                            </div>
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -67,50 +63,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- <div class="row box-content2">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extra-right">
-                        <div class="module so-extraslider-ltr ">
-                            <h3 class="modtitle"><span>Featured products</span></h3>
-                            <div class="modcontent">
-                                <div class="so-extraslider">
-                                    <div class="yt-content-slider extraslider-inner products-list" data-rtl="yes"
-                                        data-pagination="no" data-autoplay="no" data-delay="4" data-speed="0.6"
-                                        data-margin="30" data-items_column0="6" data-items_column1="4"
-                                        data-items_column2="3" data-items_column3="2" data-items_column4="2"
-                                        data-lazyload="yes" data-loop="no" data-buttonpage="top">
-                                        <div class="item" v-for="product in getFeaturedProduct" :key="product.id">
-                                            <div class="product-layout product-grid2 style1">
-                                                <div class="product-thumb transition product-item-container">
-                                                    <div class="left-block">
-                                                        <div class="product-image-container">
-                                                            <div class="image">
-
-                                                                <a href="#" target="_self" title="product">
-                                                                    <img :src="`storage/${product.cover_img}`" alt="Ground round enim" class="img-responsive">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="caption">
-                                                            <h4><router-link :to="`/single/product/${product.id}`" target="_self" title="Ground round enim">{{product.name}}</router-link></h4>
-                                                            <div class="rating">
-                                                                 <star-rating :star-size="20" :rating="product.rating" :read-only='true'></star-rating>
-                                                            </div>
-                                                            <p class="price"> <span class="price-new">$ {{product.sale_price}}</span>
-                                                                <span class="price-old">$ {{product.price}}</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
             </div>
         </div>
     </div>
@@ -182,5 +135,43 @@ export default {
 };
 </script>
 <style scoped>
+:root{
+    --light-gray:#2b3032a1;
+    --primary-color:#45ccb8;
+    --border:#2b303218;
+    --text-color:#ff686b;
+    --roboto:"Roboto",sans-serif;
+    --gugi:"Gugi",cursive;
+    --sofia:"Sofia",cursive;
+}
+.brand-logo-area-2{
+    padding: 5rem 0px;
+}
+.section-title-4 {
+    margin-bottom: 2rem;
+}
+/*.brand-logo-area-2::before {
+    background-color: none !important;
+}*/
+.single-brand{
+    display: flex;
+    flex-direction: column;
+    margin-right: .8rem;
+}
+.single-brand a{
+    text-align: center;
+    margin-top: .6rem;
+    text-decoration: none
+}
+.single-brand span:hover{
+    background: #45ccb8;
+}
 
+.single-brand .btn-span{
+    padding: 0.8rem 1.9rem;
+    border-radius: 4rem;
+    border: 1px solid var(--border);
+    background-color: white;
+    color: var(--light-gray);
+}
 </style>

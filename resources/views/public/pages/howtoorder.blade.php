@@ -1,13 +1,13 @@
 
 @extends('public.master')
 @section('content')
-<div style="margin:10px;text-align:justify">
+<div style="padding:0 10%;text-align:justify">
 <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12">
         <span style="color:orang;font-size:25px">Hatirpal is an world class wholesale ecommerce business platform.Unlimited user will visit it.</span><br><br>
         <span style="color:red;font-size:20px">How to Order...</span>
     </div>
-    <div class="col-md-10 col-md-offset-1" style='font-size:16px'>
+    <div class="col-md-12" style='font-size:16px'>
         <span style="color:orange;font-size:20px">The Largest Online Wholesale Marketplace Hatirpal.com will provide you daily's goods such as Fashion and Lifestyle,Health Care,Home Applyence etc with atrractive offer and discount.You can pay by sitting at home.</span>
         <ul>
             <li><span>1.If you are new,Sign up first </span></li>

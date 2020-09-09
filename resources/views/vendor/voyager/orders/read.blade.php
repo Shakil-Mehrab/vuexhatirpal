@@ -167,7 +167,7 @@
                                 <td><img src="{{asset('storage/'.$item->cover_img)}}" style="with:40px;height:40px" alt="imgae"/></td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->pivot->quantity}}</td>
-                                <td>{{$item->pivot->price}}</td>
+                                <td>{{$item->pivot->price*$item->pivot->quantity}}</td>
                             </tr>
                             @endforeach
                         </tbody>

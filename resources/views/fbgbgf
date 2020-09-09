@@ -1,268 +1,450 @@
+<!doctype html>
+<html class="no-js" lang="en">
 
-<html>
 <head>
-<title>paypal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Hatirpal.com : Online Wholesale Marketplace In Bangladesh</title>
+    <meta name="keywords" content="hatirpal.com,hatirpal,shopping" />
+    <meta name="description" content="Hatirpal.com is the largest online wholesale marketplace in Bangladesh.Hatirpal.com has been experimenting with and out to win the trust of buyers" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pe-icon-7-stroke.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/icofont.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/meanmenu.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bundle.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+    <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('bazarbaarifront/css/bootstrap/css/bootstrap.min.css')}}">
+
 </head>
-
 <body>
-i am here
-   <script
-    src="https://www.paypal.com/sdk/js?client-id=ART5410LrcA-NtVa32NgwChrKpuniRcMQ1BQToD47UZNuXXOqD5Iy-m0X7PPfshXipSufd9fzmqRuvrg"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-  </script>
+<div id="app">
+<public-master></public-master>
 
-  <div id="paypal-button-container"></div>
+@include('layouts.includes.footer')
+</div>
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery-1.12.0.min.js')}}"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
-
-<script>
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      // This function sets up the details of the transaction, including the amount and line item details.
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '20',
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      // This function captures the funds from the transaction.
-      return actions.order.capture().then(function(details) {
-        // This function shows a transaction success message to your buyer.
-        alert('Transaction completed by ' + details.payer.name.given_name);
-      });
-    }
-  }).render('#paypal-button-container');
-  //This function displays Smart Payment Buttons on your web page.
-</script>
+    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/ajax-mail.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bazarbaarifront/js/jquery-2.2.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bazarbaarifront/js/bootstrap.min.js')}}"></script>
 
 
 </body>
+
 </html>
-
-<html>
-<head>
-<title>paypal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
-</head>
-
-<body>
-i am here
-
-  <div id="paypal-button"></div>
-   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
-
-<script>
-  paypal.Button.render({
-     env:'sandbox',
-     client:{
-       sandbox:'demo_sandbox_client_id',
-       production:'demo_production_client_id'
-     },
-
-    locale:'en_US',
-    style: {
-      color:'blue',
-      size: 'small',
-      shape:'pill',
-    },
-    payment: function(data, actions) {
-      return actions.payment.create({
-        transactions:[{
-          amount:{
-              total:'0.01',
-              currency:'USD'
-          }
-        }]
-      });
-    },
-    onAuthorize: function(data, actions){
-      return actions.payment.execute().then(function(){
-        widdow.alert('thank');
-      });
-    }
-  },'#paypal-button');
-</script>
-
-
-</body>
-</html>
-
-
-
-
-cart backup
-<template>
-<div id='cartLoad'>
-    <NavLoad/>
-    <div class="cart-main-area pt-95 pb-100">
+<footer class="footer-area">
+    <div class="footer-top-3 black-bg pt-75 pb-25">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h1 class="cart-heading">Cart</h1>
-                    <form action="#">
-                        <div class="table-content table-responsive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>remove</th>
-                                        <th>images</th>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <!-- <th>Total</th> -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr v-for="cart in getCartContent" :key='cart.id'>
-                                        <td class="product-remove"><a href="" @click.prevent="remove(cart.id)"><i class="pe-7s-close"></i></a></td>
-                                        <td class="product-thumbnail" v-if="cart.attributes.image">
-                                            <a href="#"><img :src="`storage/${cart.attributes.image}`" style="width:80px;height:80px" alt=""></a>
-                                        </td><td v-else><img src="" style="width:80px;height:80px" alt=""></td>
-                                        <td class="product-name"><a href="#">{{cart.name}}</a></td>
-                                        <td class="product-price-cart"><span class="amount">$ {{cart.price*cart.quantity}}</span></td>
-                                        <td class="product-quantity">
-                                        <form  @submit.prevent="updateQty(cart.id)">
-                                          <input type="number" v-model="form.quantity">
-                                          <input type="submit" value="save">
-                                        </form>
-                                        </td>
-                                        <!-- <td class="product-subtotal">${{cart.quantity}}</td> -->
-                                    </tr>
-
-                                </tbody>
-                            </table>
+                <div class="col-lg-4 col-md-6 col-xl-4">
+                    <div class="footer-widget mb-40">
+                        <h3 class="footer-widget-title-3">Contact Us</h3>
+                        <div class="footer-info-wrapper-2">
+                            <div class="footer-address-electro">
+                                <div class="footer-info-icon2">
+                                    <span>Address:</span>
+                                </div>
+                                <div class="footer-info-content2">
+                                    <p>1048 Malibag Chaudhuripara Dhaka<br></p>
+                                </div>
+                            </div>
+                            <div class="footer-address-electro">
+                                <div class="footer-info-icon2">
+                                    <span>Phone:</span>
+                                </div>
+                                <div class="footer-info-content2">
+                                    <p>+8801400560808<br></p>
+                                </div>
+                            </div>
+                            <div class="footer-address-electro">
+                                <div class="footer-info-icon2">
+                                    <span>Email:</span>
+                                </div>
+                                <div class="footer-info-content2">
+                                    <p><a href="#">admin@hatirpal.com</a><br><a href="#"></a></p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="coupon-all">
-                                    <div class="coupon">
-                                        <form  role="form" @submit.prevent="applyCoupon()">
-                                        <input class="input-text" v-model="form.coupon_code" placeholder="Coupon code" type="text" required>
-                                        <input class="button" value="Apply coupon" type="submit">
-                                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xl-3">
+                    <div class="footer-widget mb-40">
+                        <h3 class="footer-widget-title-3">My Account</h3>
+                        <div class="footer-widget-content-3">
+                            <ul>
+                                <li><a href="/login">Login Hare. Already have an account?</a></li>
+                                {{-- <li><a href="cart.html">Cart History</a></li> --}}
+                                {{-- <li><a href="checkout.html"> Payment History</a></li> --}}
+                                {{-- <li><a href="shop.html">Product Tracking</a></li> --}}
+                                <li><a href="/register">Register</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i>{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-xl-2">
+                    <div class="footer-widget mb-40">
+                        <h3 class="footer-widget-title-3">Information</h3>
+                        <div class="footer-widget-content-3">
+                            <ul>
+                                <li><a href="/about/us">About Us</a></li>
+                                <li><a href="/terms/condition">Terms And Condition</a></li>
+                                <li><a href="/helpline">Support 24/24</a></li>
+                                <li><a href="/helpline"> Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xl-3">
+                    <div class="footer-widget widget-right mb-40">
+                        <h3 class="footer-widget-title-3">Service</h3>
+                        <div class="footer-widget-content-3">
+                            <ul>
+                                <li><a href="/moneyback">Returns</a></li>
+                                <li><a href="/how/to/order">Customers Service</a></li>
+                                <li><a href="/how/to/order"> Hwo to Order a Product</a></li>
+                                {{-- //grt route --}}
+                                <li><a href="{{route('creat-payment')}}"> Pay by Paypal</a></li>
+                                {{-- //post route --}}
+                                <li>
+                                    <form action="{{route('create-payment')}}" method='post'>
+                                        @csrf
+                                        <input type="submit" value="Pay by Paypa">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-middle black-bg-2 pt-35 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="footer-services-wrapper mb-30">
+                        <div class="footer-services-icon">
+                            <i class="pe-7s-car"></i>
+                        </div>
+                        <div class="footer-services-content">
+                            <a href="#"><h3>Free Shipping</h3></a>
+                            <p>Free Shipping on Bangladesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="footer-services-wrapper mb-30">
+                        <div class="footer-services-icon">
+                            <i class="pe-7s-shield"></i>
+                        </div>
+                        <div class="footer-services-content">
+                            <a href="/moneyback"><h3>Money Guarentee</h3></a>
+                            <p>Free Shipping on Bangladesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="footer-services-wrapper mb-30">
+                        <div class="footer-services-icon">
+                            <i class="pe-7s-headphones"></i>
+                        </div>
+                        <div class="footer-services-content">
+                            <a href="/helpline"><h3>Online Support</h3></a>
+                            <p>Free Shipping on Bangladesh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom  black-bg pt-25 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-5">
+                    <div class="footer-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="https://www.facebook.com/HatirPalCom-105488687708483/">facebook </a></li>
+                                <li><a href="https://twitter.com/Md_Shakil_Sard"> twiter</a></li>
+                                <li><a href="https://www.pinterest.com/smartaddons/">Pinterest</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-7">
+                    <div class="copyright f-right mrg-5">
+                        <p>
+                            Copyright © <a href="https://hatirpal.com">Hatirpal</a> @php echo date('Y');  @endphp Online Store. All Rights are Reserved by : Hatirpal Admin.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- modal -->
+<div class="modal fade" id="exampleCompare" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span class="pe-7s-close" aria-hidden="true"></span>
+    </button>
+    <div class="modal-dialog modal-compare-width" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="#">
+                    <div class="table-content compare-style table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        <a href="#">Remove <span>x</span></a>
+                                        <img src="/assets/img/cart/4.jpg" alt="">
+                                        <p>Blush Sequin Top </p>
+                                        <span>$75.99</span>
+                                        <a class="compare-btn" href="#">Add to cart</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>Description </h4>
+                                    </td>
+                                    <td class="compare-dec compare-common">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                            industry. Lorem Ipsum has beenin the stand ard dummy text ever since the
+                                            1500s, when an unknown printer took a galley</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>Sku </h4>
+                                    </td>
+                                    <td class="product-none compare-common">
+                                        <p>-</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>Availability </h4>
+                                    </td>
+                                    <td class="compare-stock compare-common">
+                                        <p>In stock</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>Weight </h4>
+                                    </td>
+                                    <td class="compare-none compare-common">
+                                        <p>-</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>Dimensions </h4>
+                                    </td>
+                                    <td class="compare-stock compare-common">
+                                        <p>N/A</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>brand </h4>
+                                    </td>
+                                    <td class="compare-brand compare-common">
+                                        <p>HasTech</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>color </h4>
+                                    </td>
+                                    <td class="compare-color compare-common">
+                                        <p>Grey, Light Yellow, Green, Blue, Purple, Black </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title">
+                                        <h4>size </h4>
+                                    </td>
+                                    <td class="compare-size compare-common">
+                                        <p>XS, S, M, L, XL, XXL </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="compare-title"></td>
+                                    <td class="compare-price compare-common">
+                                        <p>$75.99 </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="electro-product-wrapper wrapper-padding pt-95 pb-45" style="padding: 2px">
+    <div class="container-fluid">
+        <div class="top-product-style">
+            <div class="tab-content">
+                <div class="row">
+                    @php
+                    use App\Model\Slide;
+                    $slides=Slide::all();
+                    @endphp
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                            @for($i=0;$i<5;$i++)
+                            @if($i==0)
+                                <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class="active"></li>
+                                @else
+                                <li data-target="#carousel-example-generic" data-slide-to="{{$i}}"></li>
+                            @endif
+                            @endfor
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                            @php $check=0; @endphp
+                            @forelse($slides as $slide)
+                            @php $check=$check+1;@endphp
+                                @if($check==1)
+                                    <div class="item active">
+                                    <img src="storage/{{$slide->image}}" style="width:100%;height: 320px;" alt="Slider">
+                                    <div class="carousel-caption">
+
                                     </div>
-                                    <!-- <div class="coupon2">
-                                        <input class="button" name="update_cart" value="Update cart" type="submit">
-                                    </div> -->
-                                </div>
+                                    </div>
+                                @else
+                                    <div class="item">
+                                    <img src="storage/{{$slide->image}}" style="width:100%;height: 320px;" alt="Slider">
+                                    <div class="carousel-caption">
+
+                                    </div>
+                                    </div>
+                                @endif
+                            @empty
+                            @endforelse
                             </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                            </a>
                         </div>
+                    </div>
+                </div><br>
+                <div class="tab-pane active show fade" id="electro1" role="tabpanel">
+                    <div class="custom-row-2">
                         <div class="row">
-                            <div class="col-md-5 ml-auto">
-                                <div class="cart-page-total">
-                                    <h2>Cart totals</h2>
-                                    <ul>
-                                        <li>Subtotal<span>{{getCartSubTotal}}</span></li>
-                                        <li>Total<span>{{getCartTotal}}</span></li>
-                                    </ul>
-                                    <router-link to='cart/checkout' href="#">Proceed to checkout</router-link>
-                                </div>
+                            <div class="col-md-12 col-md-offset-2" style="color: orange">
+                                <h1><i class="pe-7s-call"></i> Contact No: +8801615336636</h1>
+                                <h1><i class="pe-7s-call"></i>Telephone No: +201615336636</h1>
+                                <h1><i class="pe-7s-mail"></i>Email: admin@hatirpal.com</h1>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</template>
-<script>
-import NavLoad from "./../../includes/nav.vue"
-export default {
-    name: "PublicHome",
-    components:{
-      NavLoad
-    },
-    data () {
-    return {
-        form: new Form({
-        coupon_code: '',
-        quantity:'',
-        })
-    }
-    },
-    computed:{
-        getCartContent(){
-        return this.$store.getters.getCartContent
-        },
-        getCartSubTotal(){
-        return this.$store.getters.getCartSubTotal
-        },
-        getCartTotal(){
-        return this.$store.getters.getCartTotal
-        },
-        getPopularProduct(){
-        return this.$store.getters.getPopularProduct
-        }
-    },
-    methods:{
-        showCartContent(){
-        this.$store.dispatch('showCartContent');
-        },
-        showCartTotal(){
-        this.$store.dispatch('showCartTotal');
-        },
-        showCartSubtotal(){
-        this.$store.dispatch('showCartSubtotal');
-        },
-        updateQty(id){
-            console.log(id)
-            console.log(this.form.quantity)
-             this.form.post('/user/cart/update/'+id+'?qty='+this.form.quantity)
-                .then(()=>{
-                    // this.$store.dispatch("showAdminCategory")
-                    this.$store.dispatch('showCartContent');
-                    Toast.fire({
-                    icon: 'success',
-                    title: 'cart updated!'
-                })
-            })
-            .catch(()=>{})
-        },
-        remove(id){
-            console.log(id)
-             axios.get('/user/cart/remove/'+id)
-                .then(()=>{
-                this.$store.dispatch('showCartContent');
-                this.$store.dispatch('showCartTotal');
-                this.$store.dispatch('showCartSubtotal');
-                this.$store.dispatch('showCartCount');
-                    Toast.fire({
-                    icon: 'success',
-                    title: 'cart removed!'
-                })
-            })
-            .catch(()=>{})
-        },
-        applyCoupon(){
-            console.log(this.form.coupon_code)
-            this.form.post('/user/apply-coupon/cart')
-            .then((response)=>{
-                this.$store.dispatch('showCartContent');
-                this.$store.dispatch('showCartTotal');
-                this.$store.dispatch('showCartSubtotal');
-            Toast.fire({
-                icon: 'success',
-                title: 'Coupon Applied!'
-            })
-            }).catch(()=>{})
-        }
-    },
-    mounted(){
-    //   this.showBestProduct();
-      this.showCartContent();
-      this.showCartTotal();
-      this.showCartSubtotal();
-    //   this.getPopularProduct();
-    },
-};
-</script>
 
-<style scoped>
-</style>
+
+
+
+<div class="cart-main-area pt-95 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2>Checkout</h2>
+                <h3>Shipping Information</h3>
+                <form action="{{route('orders.store')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Full Name</label>
+                        <input type="text" name="shipping_fullname" id="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">State</label>
+                        <input type="text" name="shipping_state" id="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">City</label>
+                        <input type="text" name="shipping_city" id="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Zip</label>
+                        <input type="number" name="shipping_zipcode" id="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Full Address</label>
+                        <input type="text" name="shipping_address" id="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Mobile</label>
+                        <input type="text" name="shipping_phone" id="" class="form-control">
+                    </div>
+
+                    <h4>Payment option</h4>
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="payment_method" id="" value="cash_on_delivery">
+                            Cash on delivery
+                        </label>
+                    </div>
+                    <br>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="payment_method" id="" value="paypal">
+                            Paypal
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

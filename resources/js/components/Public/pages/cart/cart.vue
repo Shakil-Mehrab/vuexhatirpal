@@ -26,9 +26,6 @@
                                         @removeItem="remove" 
                                         @updateItem="updateQty" 
                                     />
-
-                                    
-
                                 </tbody>
                             </table>
                         </div>
@@ -113,9 +110,12 @@ export default {
                 .then(()=>{
                     // this.$store.dispatch("showAdminCategory")
                     this.$store.dispatch('showCartContent');
+                    this.$store.dispatch('showCartSubtotal');
+                    this.$store.dispatch('showCartTotal');
+
                     Toast.fire({
                     icon: 'success',
-                    title: 'cart updated!'
+                    title: 'Cart has been updated!'
                 })
             })
             .catch(()=>{})

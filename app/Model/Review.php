@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    public function product(){
+     public function product(){
 		return $this->belongsTo('App\Model\Product');
 	}
 	public function user(){

@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_address');
             $table->bigInteger('city_id');
             $table->bigInteger('country_id');
+            $table->bigInteger('deliverybranch_id');
             $table->string('shipping_zipcode');
             $table->string('shipping_phone');
             $table->string('notes')->nullable();

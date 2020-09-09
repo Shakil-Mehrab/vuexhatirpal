@@ -11,6 +11,11 @@ use App\User;
 
 class ShopController extends Controller
 {
+    public function create(){
+        // dd($shop->owner->name. ' welcome to your shop named ', $shop->name);
+        $categories=Shop::where('user_id',auth()->user()->id)->first();
+        return view('layouts.shop.create');
+    }
     public function store(Request $request)
     {
         //add validation
@@ -39,10 +44,10 @@ class ShopController extends Controller
             $q->where('name', 'admin');
         })->get();
         // Mail::to($admins)->send(new ShopActivationRequest($shop));
+        return back()->withSuccess('Shop is Created.Wait for Your Confirmation');
 
     }
-    public function show()
-    {
+    public function show(){
         // dd($shop->owner->name. ' welcome to your shop named ', $shop->name);
         $categories=Shop::where('user_id',auth()->user()->id)->first();
         return response()->json(['yourShop'=>$categories]);

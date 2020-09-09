@@ -17,8 +17,7 @@ Route::get('/pavilion/country/show/{country_id}','Layout\PavilionController@show
 
 //pop,renent,cat,abt,contact
 Route::get('/about/us','Layout\AboutController@about');
-Route::get('/helpline','Layout\AboutController@contact');
-Route::get('/helpline','Layout\AboutController@helpline');
+Route::get('/contact/us','Layout\AboutController@contact');
 Route::get('/terms/condition','Layout\AboutController@condition');
 Route::get('/moneyback','Layout\AboutController@moneyback');
 Route::get('/how/to/order','Layout\AboutController@howToOrder');
@@ -60,9 +59,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-
 Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
-    Route::get('/category','Layouts\CategoryController@index');
+    Route::get('/grid/category/{cat_id}','Layouts\CategoryController@gridIndex');
+    Route::get('/list/category/{cat_id}','Layouts\CategoryController@listIndex');
     Route::get('/featured','Layouts\CategoryController@featured');
     Route::get('/fashion','Layouts\CategoryController@fashionProduct');
 
@@ -72,6 +71,8 @@ Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
 
 
     ////nav
+    Route::post('/search','Layouts\ProductController@search')->name('search');
+
     Route::get('/nav/search','Layouts\ProductController@searcByNav');
     ////search.vue page
     Route::get('/all/product','Layouts\ProductController@allProduct');
@@ -88,8 +89,8 @@ Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
 
 
 //////shop page
-    Route::get('/shops/show','Layouts\ShopController@show');///creating new shop checking
-    Route::post('/shops/store','Layouts\ShopController@store');
+    Route::get('/shops/create','Layouts\ShopController@create');///creating new shop checking
+    Route::post('/shops/store','Layouts\ShopController@store')->name('shop.store');
 
 
 
@@ -113,24 +114,28 @@ Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
 
 
 
-    Route::get('/products/show/{id}','Layouts\ProductController@show');
+    Route::get('/product/show/{id}','Layouts\ProductController@show');
+    Route::get('/product/quick/show/{id}','Layouts\ProductController@quickShow');
 	Route::get('/same/products/show/{id}','Layouts\ProductController@sameProduct');
+    Route::post('/review/products/{id}','Layouts\ProductController@review')->name('review.product');
     Route::get('/related/product/{id}','Layouts\ProductController@relatedProduct');
 
 
         // all about cart
-    Route::get('/cart','Layout\Cart\CartController@index');
-    Route::get('/cart/add/{id}','Layout\Cart\CartController@addItem');
-    Route::get('/cart/count','Layout\Cart\CartController@cartCount');
-    Route::get('/cart/subtotal','Layout\Cart\CartController@subTotal');
-    Route::get('/cart/total','Layout\Cart\CartController@cartTotal');
-    Route::get('/cart/remove/{id}','Layout\Cart\CartController@destroy');
-    Route::post('/cart/update/{id}','Layout\Cart\CartController@update');
+    Route::get('/cart','Layouts\Cart\CartController@index');
+    Route::get('/cart/add/{id}','Layouts\Cart\CartController@addItem');
+    // Route::get('/cart/count','Layout\Cart\CartController@cartCount');
+    // Route::get('/cart/subtotal','Layout\Cart\CartController@subTotal');
+    // Route::get('/cart/total','Layout\Cart\CartController@cartTotal');
+    Route::get('/cart/remove/{id}','Layouts\Cart\CartController@destroy');
+    Route::post('/cart/update/{id}','Layouts\Cart\CartController@update')->name('user.cart.update');
 
 
 
-    Route::post('/apply-coupon/cart', 'Layout\Cart\CartController@applyCoupon');
-    Route::post('/orders/store','Layout\Cart\CartController@store');
+    Route::post('/apply-coupon/cart', 'Layouts\Cart\CartController@applyCoupon');
+    Route::post('/orders/store','Layouts\Cart\CartController@store')->name('orders.store');
+    Route::get('/checkout', 'Layouts\Cart\CartController@checkout');
+
 });
 
 

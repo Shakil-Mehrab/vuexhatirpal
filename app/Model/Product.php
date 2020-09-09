@@ -8,6 +8,8 @@ use App\Model\User_product_view;
 use App\Model\Category;
 use App\Model\Attribute;
 use App\Model\Product_discount;
+use App\Model\Reviewf;
+
 
 use App\User;
 
@@ -33,6 +35,10 @@ class Product extends Model
      }
      public function views(){
         return $this->viewedUsers()->sum('count');
+
+     }
+     public function reviews(){
+        return $this->hasMany(Review::class);
 
      }
      public function discount(){

@@ -226,73 +226,74 @@
 
 
 
-    // showBestProduct(context,page){
-    //     axios.get('http://hatirpal.com/user/best/product?page='+page)
-    //     .then((response)=>{context.commit('bestProducts',response.data.bestProducts)})
-    // },
-    // showRecentProduct(context,page){
-    //     axios.get('http://hatirpal.com/user/recent/product?page='+page)
-    //     .then((response)=>{context.commit('recentProducts',response.data.recentProducts)})
-    // },
-    // showPopularProduct(context,page){
-    //     axios.get('http://hatirpal.com/user/popular/product?page='+page)
-    //     .then((response)=>{context.commit('popularProducts',response.data.popularProducts)})
-    // },
-    // showBestSale(context,page){
-    //     axios.get('http://hatirpal.com/user/best/sale?page='+page)
-    //     .then((response)=>{context.commit('bestSale',response.data.bestSale)})
-    // },
-    // showAllTopRated(context,page){
-    //     axios.get('http://hatirpal.com/user/toprated/product?page='+page)
-    //     .then((response)=>{context.commit('allTopRated',response.data.allTopRated)})
-    // },
-    // showAllProduct(context,page){
-    //     axios.get('http://hatirpal.com/user/all/product?page='+page)
-    //     .then((response)=>{context.commit('allProduct',response.data.allProduct)})
-    // },
-    // showAllWishProduct(context,page){
-    //     axios.get('http://hatirpal.com/user/wish/list?page='+page)
-    //     .then((response)=>{context.commit('allWishProduct',response.data.allWishProduct)})
-    // },
-    // showAllCompareProduct(context,page){
-    //     axios.get('http://hatirpal.com/user/compare/list?page='+page)
-    //     .then((response)=>{context.commit('allCompareProduct',response.data.allCompareProduct)})
-    // },
-
-
-
+    
     showBestProduct(context,page){
-        axios.get('http://localhost:8000/user/best/product?page='+page)
+        axios.get('http://hatirpal.com/user/best/product?page='+page)
         .then((response)=>{context.commit('bestProducts',response.data.bestProducts)})
     },
     showRecentProduct(context,page){
-        axios.get('http://localhost:8000/user/recent/product?page='+page)
+        axios.get('http://hatirpal.com/user/recent/product?page='+page)
         .then((response)=>{context.commit('recentProducts',response.data.recentProducts)})
     },
     showPopularProduct(context,page){
-        axios.get('http://localhost:8000/user/popular/product?page='+page)
+        axios.get('http://hatirpal.com/user/popular/product?page='+page)
         .then((response)=>{context.commit('popularProducts',response.data.popularProducts)})
     },
     showBestSale(context,page){
-        axios.get('http://localhost:8000/user/best/sale?page='+page)
+        axios.get('http://hatirpal.com/user/best/sale?page='+page)
         .then((response)=>{context.commit('bestSale',response.data.bestSale)})
     },
     showAllTopRated(context,page){
-        axios.get('http://localhost:8000/user/toprated/product?page='+page)
+        axios.get('http://hatirpal.com/user/toprated/product?page='+page)
         .then((response)=>{context.commit('allTopRated',response.data.allTopRated)})
     },
     showAllProduct(context,page){
-        axios.get('http://localhost:8000/user/all/product?page='+page)
+        axios.get('http://hatirpal.com/user/all/product?page='+page)
         .then((response)=>{context.commit('allProduct',response.data.allProduct)})
     },
     showAllWishProduct(context,page){
-        axios.get('http://localhost:8000/user/wish/list?page='+page)
+        axios.get('http://hatirpal.com/user/wish/list?page='+page)
         .then((response)=>{context.commit('allWishProduct',response.data.allWishProduct)})
     },
     showAllCompareProduct(context,page){
-        axios.get('http://localhost:8000/user/compare/list?page='+page)
+        axios.get('http://hatirpal.com/user/compare/list?page='+page)
         .then((response)=>{context.commit('allCompareProduct',response.data.allCompareProduct)})
     },
+
+
+
+    // showBestProduct(context,page){
+    //     axios.get('http://localhost:8000/user/best/product?page='+page)
+    //     .then((response)=>{context.commit('bestProducts',response.data.bestProducts)})
+    // },
+    // showRecentProduct(context,page){
+    //     axios.get('http://localhost:8000/user/recent/product?page='+page)
+    //     .then((response)=>{context.commit('recentProducts',response.data.recentProducts)})
+    // },
+    // showPopularProduct(context,page){
+    //     axios.get('http://localhost:8000/user/popular/product?page='+page)
+    //     .then((response)=>{context.commit('popularProducts',response.data.popularProducts)})
+    // },
+    // showBestSale(context,page){
+    //     axios.get('http://localhost:8000/user/best/sale?page='+page)
+    //     .then((response)=>{context.commit('bestSale',response.data.bestSale)})
+    // },
+    // showAllTopRated(context,page){
+    //     axios.get('http://localhost:8000/user/toprated/product?page='+page)
+    //     .then((response)=>{context.commit('allTopRated',response.data.allTopRated)})
+    // },
+    // showAllProduct(context,page){
+    //     axios.get('http://localhost:8000/user/all/product?page='+page)
+    //     .then((response)=>{context.commit('allProduct',response.data.allProduct)})
+    // },
+    // showAllWishProduct(context,page){
+    //     axios.get('http://localhost:8000/user/wish/list?page='+page)
+    //     .then((response)=>{context.commit('allWishProduct',response.data.allWishProduct)})
+    // },
+    // showAllCompareProduct(context,page){
+    //     axios.get('http://localhost:8000/user/compare/list?page='+page)
+    //     .then((response)=>{context.commit('allCompareProduct',response.data.allCompareProduct)})
+    // },
   },
   mutations: {
     bestProducts(state,data) {

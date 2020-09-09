@@ -19,10 +19,10 @@
      <div class="register-logo" style="margin-bottom:-50px;margin-top:-50px">
       <a href="/"><img src="{{asset('images/default/logo/registerLogo.png')}}" height='200px' with='100%' alt="logo"></a>
     </div>
-{{-- @php
+<!-- @php
 use App\Model\Country;
 $countries=Country::all();
-@endphp --}}
+@endphp -->
   <div class="register-box-body">
     <p class="login-box-msg"><span style="font-size:25px;color:orange">Register a New Account</span></p>
     <form action="{{route('register')}}" method="post">
@@ -45,7 +45,16 @@ $countries=Country::all();
             </span>
         @endif
       </div>
-        {{-- <div class="form-group{{ $errors->has('country_id') ? ' is-invalid' : '' }} has-feedback">
+      <div class="form-group{{ $errors->has('phone') ? ' is-invalid' : '' }} has-feedback">
+        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone No" value="{{ old('phone') }}" required>
+        <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+        @if ($errors->has('phone'))
+            <span class="invalid-feedback" role="alert">
+                <strong style="color:red">{{ $errors->first('phone') }}</strong>
+            </span>
+        @endif
+      </div>
+        <!-- <div class="form-group{{ $errors->has('country_id') ? ' is-invalid' : '' }} has-feedback">
           <select name="country_id" class="form-control" required>
               <option value="">Select One</option>
               @forelse($countries as $country)
@@ -97,7 +106,7 @@ $countries=Country::all();
                   <strong style="color:red">{{ $errors->first('phone') }}</strong>
               </span>
           @endif
-       </div> --}}
+       </div> -->
       <div class="form-group{{ $errors->has('password') ? ' is-invalid' : '' }} has-feedback">
         <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="{{ old('password') }}" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -154,8 +163,7 @@ $countries=Country::all();
 
 
 
-{{--
-<script>
+<!-- <script>
    $(function(){
     var country=$('select[name="country_id"]');
     var code=$('select[name="code_id"]');
@@ -235,6 +243,6 @@ $countries=Country::all();
 
 
   })
-</script> --}}
+</script> -->
 </body>
 </html>

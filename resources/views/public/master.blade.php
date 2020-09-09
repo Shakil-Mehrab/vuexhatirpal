@@ -1,139 +1,191 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
+<!-- Mirrored from portotheme.com/html/porto/demo-5/ by , Thu, 11 Apr 2019 15:14:22 GMT -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Hatirpal.com : Online Wholesale Marketplace In Bangladesh</title>
     <meta name="keywords" content="hatirpal.com,hatirpal,shopping" />
     <meta name="description" content="Hatirpal.com is the largest online wholesale marketplace in Bangladesh.Hatirpal.com has been experimenting with and out to win the trust of buyers" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="SW-THEMES"> 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
-
-    <!-- all css here -->
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/pe-icon-7-stroke.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/icofont.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/meanmenu.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/bundle.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
-    <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('bazarbaarifront/css/bootstrap/css/bootstrap.min.css')}}">
-<style>
-.electronics-login-register ul li a{
-color: white;
-}
-.electronics-login-register ul li a i{
-color: white;
-}
-
-.header-contact-info ul li a{
-    color: white;
-}
-.header-contact-info ul li a i{
-    color:white;
-}
-.categories-search-wrapper {
-    background-color: white;
-}
-.same-style-text a{
-    color: white;
-}
-</style>
+    <link rel="icon" type="image/x-icon" href="{{asset('porto/images/icons/favicon.png')}}">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{{asset('porto/css/bootstrap.min.css')}}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{{asset('porto/css/style.min.css')}}">
 </head>
 <body>
-<div id="app">
-<header style="background:cadetblue">
-    <div class="header-top-wrapper-2 border-bottom-2">
-        <div class="header-info-wrapper pl-200 pr-200" >
-            <div class="header-contact-info">
-                <ul>
-                    <li><a href="#"><i class="pe-7s-call"></i> +8801400560808</a></li>
-                    <li><a href="#"><i class="pe-7s-mail"></i> admin@hatirpal.com</a></li>
-                </ul>
-            </div>
-            <div class="electronics-login-register">
-                <ul>
-                    <li style="font-color:white"><a href="#"><i class="pe-7s-repeat"></i>Compare</a></li>
-                    <li><a href="#"><i class="pe-7s-like"></i>Wishlist</a></li>
-                    <li><a href="#"><i class="pe-7s-flag"></i>Bangladesh</a></li>
-                    <li><a class="border-none" href="#">$ USD</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="page-wrapper">
+        @include('public.includes.nav')
+        @yield('content')
+        @include('layouts.includes.footer')
     </div>
-    <div class="header-bottom pt-40 pb-30 clearfix" style="padding:5px">
-        <div class="header-bottom-wrapper pr-200 pl-200">
-            <div class="logo-3">
-                <a href='/'>
-                    <img src="/storage/default/logo.png" alt="" style="width: 150px;height:50px">
-                </a>
-            </div>
-            <div class="categories-search-wrapper">
-                <h3>Welcome to Hatirpal.com</h3>
-            </div>
-            <div class="trace-cart-wrapper">
-                <div class="trace same-style">
-                    @if (Route::has('login'))
-                    @auth
-                    @else
-                    <div class="same-style-text">
-                        <a href="/register"><h4>Register</h4></a>
-                    </div>
-                    <div class="same-style-text">
-                        <a href="/login"><h4>Login</h4></a>
-                    </div>
-                    @endauth
-                    @endif
-                </div>
-            </div>
-            <div class="mobile-menu-area electro-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
-                <div class="mobile-menu">
-                    <nav id="mobile-menu-active">
-                        <ul class="menu-overflow">
-                            <li><router-link to='/'>HOME</router-link>
 
-                            </li>
-                            <li><a href="#">BLOG</a>
+    <div class="mobile-menu-overlay"></div>
 
+    <div class="mobile-menu-container">
+        <div class="mobile-menu-wrapper">
+            <span class="mobile-menu-close"><i class="icon-cancel"></i></span>
+            <nav class="mobile-nav">
+                <ul class="mobile-menu">
+                    <li class="active"><a href="/home">Home</a></li>
+                    <li>
+                        <a href="#">Categories</a>
+                        <ul>
+                        @php
+                            use App\Model\Category;
+                            $categories=Category::whereNull('parent_id')->get();
+                        @endphp
+                        @forelse($categories as $category)    
+                            <li>
+                                <a href="/user/category/{{$category->id}}">{{ $category->name}}</a>
+                                <ul>
+                                @if($category->children)
+                                    @foreach($category->children as $child)
+                                        <li><a href="/user/category/{{$child->id}}">-{{$child->name}}</a></li>
+                                    @endforeach
+                                @endif
+                                </ul>
                             </li>
-                            <li><a href="#"> Contact </a></li>
+                        @empty
+                        @endforelse
                         </ul>
-                    </nav>
-                </div>
-            </div>
+                    </li>
+                    <li>
+                        <a href="#">Products</a>
+                        <!-- <ul>
+                            <li>
+                                <a href="#">Variations</a>
+                                <ul>
+                                    <li><a href="product.html">Horizontal Thumbnails</a></li>
+                                    <li><a href="product-full-width.html">Vertical Thumbnails<span class="tip tip-hot">Hot!</span></a></li>
+                                    <li><a href="product.html">Inner Zoom</a></li>
+                                    <li><a href="product-addcart-sticky.html">Addtocart Sticky</a></li>
+                                    <li><a href="product-sidebar-left.html">Accordion Tabs</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Variations</a>
+                                <ul>
+                                    <li><a href="product-sticky-tab.html">Sticky Tabs</a></li>
+                                    <li><a href="product-simple.html">Simple Product</a></li>
+                                    <li><a href="product-sidebar-left.html">With Left Sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Product Layout Types</a>
+                                <ul>
+                                    <li><a href="product.html">Default Layout</a></li>
+                                    <li><a href="product-extended-layout.html">Extended Layout</a></li>
+                                    <li><a href="product-full-width.html">Full Width Layout</a></li>
+                                    <li><a href="product-grid-layout.html">Grid Images Layout</a></li>
+                                    <li><a href="product-sticky-both.html">Sticky Both Side Info<span class="tip tip-hot">Hot!</span></a></li>
+                                    <li><a href="product-sticky-info.html">Sticky Right Side Info</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="#">Pages<span class="tip tip-hot">Hot!</span></a>
+                        <!-- <ul>
+                            <li><a href="cart.html">Shopping Cart</a></li>
+                            <li>
+                                <a href="#">Checkout</a>
+                                <ul>
+                                    <li><a href="checkout-shipping.html">Checkout Shipping</a></li>
+                                    <li><a href="checkout-shipping-2.html">Checkout Shipping 2</a></li>
+                                    <li><a href="checkout-review.html">Checkout Review</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="#" class="login-link">Login</a></li>
+                            <li><a href="forgot-password.html">Forgot Password</a></li>
+                        </ul> -->
+                    </li>
+                    <li><a href="#">Blog</a>
+                        <ul>
+                            <li><a href="#">Blog Post</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact Us</a></li>
+                    @php
+                        use App\Model\Shop;
+                        $shop=Shop::where('user_id',7)->first();
+                    @endphp
+                    @if($shop->is_active==1)
+                    <li class="float-right"><a href="/admin">Create Your Product</a></li>
+                    @elseif($shop->is_active==0)
+                    <li class="float-right"><a href="#" style="color: red">Wait for Shop Confirmation</a></li>
+                    @else
+                    <li class="float-right"><a href="/user/shops/create">Create Your Shop</a></li>
+                    @endif
+                </ul>
+            </nav><!-- End .mobile-nav -->
+
+            <!-- <div class="social-icons">
+                <a href="#" class="social-icon" target="_blank"><i class="icon-facebook"></i></a>
+                <a href="#" class="social-icon" target="_blank"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank"><i class="icon-instagram"></i></a>
+            </div> -->
         </div>
     </div>
-</header>
-@yield('content')
-@include('layouts.includes.footer')
-</div>
-<script src="{{asset('js/app.js')}}"></script>
-<!-- all js here -->
-<script src="{{asset('assets/js/vendor/jquery-1.12.0.min.js')}}"></script>
-<script src="{{asset('assets/js/popper.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
-<script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-<script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
-<script src="{{asset('assets/js/waypoints.min.js')}}"></script>
-<script src="{{asset('assets/js/ajax-mail.js')}}"></script>
-<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('assets/js/plugins.js')}}"></script>
-<script src="{{asset('assets/js/main.js')}}"></script>
-<script type="text/javascript" src="{{asset('bazarbaarifront/js/jquery-2.2.4.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bazarbaarifront/js/bootstrap.min.js')}}"></script>
-{{-- <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-<script>paypal.Buttons().render('body');</script> --}}
 
+    <div class="newsletter-popup mfp-hide" id="newsletter-popup-form" style="background-image: url(assets/images/newsletter_popup_bg.jpg)">
+        <div class="newsletter-popup-content">
+            <img src="assets/images/logo-black.png" alt="Logo" class="logo-newsletter">
+            <h2>BE THE FIRST TO KNOW</h2>
+            <p>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</p>
+            <form action="#">
+                <div class="input-group">
+                    <input type="email" class="form-control" id="newsletter-email" name="newsletter-email" placeholder="Email address" required>
+                    <input type="submit" class="btn" value="Go!">
+                </div><!-- End .from-group -->
+            </form>
+            <div class="newsletter-subscribe">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="1">
+                        Don't show this popup again
+                    </label>
+                </div>
+            </div>
+        </div><!-- End .newsletter-popup-content -->
+    </div>
+
+    <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
+
+    <!-- Plugins JS File -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> -->
+    <script src="{{asset('porto/js/jquery.min.js')}}"></script>
+    <script src="{{asset('porto/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('porto/js/plugins.min.js')}}"></script>
+
+    <!-- Main JS File -->
+    <script src="{{asset('porto/js/main.min.js')}}"></script>
+
+
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '451585265723432',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>  
 </body>
 
+<!-- Mirrored from portotheme.com/html/porto/demo-5/ by , Thu, 11 Apr 2019 15:15:00 GMT -->
 </html>

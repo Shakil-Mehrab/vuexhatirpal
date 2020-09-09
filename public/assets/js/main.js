@@ -139,20 +139,45 @@
         item: 7,
         responsive: {
             0: {
-                items: 1
+                items: 2
             },
             768: {
-                items: 3
+                items: 4
             },
             1000: {
-                items: 4
+                items: 6
             },
             1200: {
                 items: 7
             }
         }
     })
-    
+   
+    $(".slider-one").owlCarousel({
+        loop:true,
+        autoplay:false,
+        autoplayTimeout:3000,
+        dots:false,
+        nav:true,
+        item: 7, 
+        navText:[$('.owl-navigation .owl-nav-prev'),$('.owl-navigation .owl-nav-next')],
+        responsive: {
+            0: {
+                items: 2
+            },
+            768: {
+                items: 4
+            },
+            1000: {
+                items: 5
+            },
+            1200: {
+                items: 6
+            }
+        }
+       
+    });
+
     
     /* book list active */
     $('.book-list-active').owlCarousel({
